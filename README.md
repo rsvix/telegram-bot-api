@@ -14,10 +14,6 @@ A small HTTP + Telegram bot service that receives POST requests to send messages
 
 ---
 
-Server listens on `:1323` by default.
-
----
-
 ## API
 
 ### POST /send-message
@@ -34,14 +30,14 @@ Server listens on `:1323` by default.
 ```
 
 Notes:
-- `chat_id` is an integer (`int64`).
-- `message` is required (non-empty).
 - `disable_link_preview` is optional; when omitted it defaults to `true`.
 
 Responses:
 - `200` — `{"status":"message sent"}` (success)
 - `400` — `{"error":"..."}` (client error, invalid JSON or missing fields)
 - `500` — `{"error":"..."}` (server error, e.g., failed to send)
+
+Server listens on `:1323` by default.
 
 ---
 
