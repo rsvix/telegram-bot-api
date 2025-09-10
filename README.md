@@ -1,6 +1,7 @@
 # Telegram Bot API
 
-A small HTTP + Telegram bot service that receives POST requests to send messages to Telegram chats. Built with Go, Echo (HTTP), and www.github.com/go-telegram/bot.
+A small HTTP + Telegram bot service that receives POST requests to send messages to Telegram chats.
+Built with Go, Echo (HTTP), and www.github.com/go-telegram/bot.
 
 ---
 
@@ -48,6 +49,23 @@ Server listens on `:1323` by default.
 
 ---
 
-## License
+## Docker compose
 
-MIT
+```yml
+services:
+# ...
+
+  telegram-bot-api:
+    image: ghcr.io/rsvix/rsvix/telegram-bot-api:latest
+    restart: unless-stopped
+    ports:
+      - "1323:1323"
+    environment:
+      # Use one of these: prefer TOKEN_FILE for secrets
+      - TELEGRAM_BOT_TOKEN_FILE=/run/secrets/telegram_bot_token
+      # - TELEGRAM_BOT_TOKEN=123456:ABC-DEF...
+    secrets:
+      - telegram_bot_token
+
+# ...
+```
