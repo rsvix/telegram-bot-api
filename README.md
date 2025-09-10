@@ -56,7 +56,7 @@ services:
 # ...
 
   telegram-bot-api:
-    image: ghcr.io/rsvix/rsvix/telegram-bot-api:latest
+    image: ghcr.io/rsvix/telegram-bot-api:latest
     restart: unless-stopped
     ports:
       - "1323:1323"
@@ -68,4 +68,12 @@ services:
       - telegram_bot_token
 
 # ...
+```
+
+---
+
+## Testing with Curl
+
+```bash
+curl -X POST http://localhost:1323/send-message -H "Content-Type: application/json" -d '{"chat_id": 123456789, "message": "Hello world"}'
 ```
